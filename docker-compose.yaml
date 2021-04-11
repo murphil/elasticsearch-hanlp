@@ -1,0 +1,36 @@
+version: '3'
+services:
+    or:
+        image: nnurphy/or
+        restart: always
+        ports:
+            - 80:80
+        volumes:
+            - ./volumes/srv:/srv:rw
+            - ./config/nginx/default.conf:/etc/openresty/conf.d/default.conf
+        links:
+            - es
+
+    es:
+        image: nnurphy/elasticsearch:ik
+        restart: always
+        #ports:
+        #    - 9200:9200
+        #    - 9300:9300
+        environment:
+            discovery.type: single-node
+        volumes:
+            - ./volumes/es:/usr/share/elasticsearch/data:rw
+            - ./config/elasticsearch/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+
+    logstash:
+        image: nnurphy/logstash:latest
+        restart: always
+        links:
+            - es
+        environment:
+            MYSQL_USER: ""
+            MYSQL_PASSWORD: ""
+            MYSQL_URL: ""
+        volumes:
+            - ./config/logstash:/usr/share/logstash/config
