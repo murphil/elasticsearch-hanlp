@@ -3,8 +3,8 @@
 # https://github.com/KennFalcon/elasticsearch-analysis-hanlp
 # https://github.com/medcl/elasticsearch-analysis-ik
 
-FROM elasticsearch:7.8.0
-ARG plugin_version=7.8.0
+FROM elasticsearch:7.12.0
+ARG plugin_version=7.12.0
 RUN set eux \
   ; elasticsearch-plugin install --batch \
     https://github.com/medcl/elasticsearch-analysis-pinyin/releases/download/v${plugin_version}/elasticsearch-analysis-pinyin-${plugin_version}.zip \
