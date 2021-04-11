@@ -1,2 +1,2 @@
 test:
-    docker build . -t elasticsearch:hanlp
+    docker build . -t elasticsearch
