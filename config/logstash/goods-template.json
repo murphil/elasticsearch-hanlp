@@ -10,7 +10,7 @@
                 },
                 "cngram": {
                     "type": "condition",
-                    "filter": [ "my_ngram" ],
+                    "filter": [ "my_ngram"  ],
                     "script": {
                         "source": "token.getTerm().toString() ==~ /[0-9a-zA-Z]+./ "
                     }
@@ -44,13 +44,13 @@
                     "keep_full_pinyin": "true"
                 },
                 "my_trigram": {
-                  "type": "ngram",
-                  "min_gram": 3,
-                  "max_gram": 3,
-                  "token_chars": [
-                    "letter",
-                    "digit"
-                  ]
+                    "type": "ngram",
+                    "min_gram": 3,
+                    "max_gram": 3,
+                    "token_chars": [
+                        "letter",
+                        "digit"
+                    ]
                 }
             }
         }
